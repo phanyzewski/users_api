@@ -17,3 +17,5 @@ config :user_api, UserApi.Repo,
   database: "user_api_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :bcrypt_elixir, :log_rounds, 4
