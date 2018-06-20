@@ -2,22 +2,22 @@ defmodule UserApiWeb.Router do
   use UserApiWeb, :router
 
   pipeline :api do
-    plug :accepts, ["json"]
-    plug :fetch_session
+    plug(:accepts, ["json"])
+    plug(:fetch_session)
   end
 
   pipeline :api_auth do
-    plug :ensure_authentication
+    plug(:ensure_authentication)
   end
 
   scope "/api", UserApiWeb do
     pipe_through(:api)
-    post "/users/sign_in", UserController, :sign_in
+    post("/users/sign_in", UserController, :sign_in)
   end
 
   scope "/api", UserApiWeb do
     pipe_through([:api, :api_auth])
-    resources "/users", UserController, except: [:new, :edit]
+    resources("/users", UserController, except: [:new, :edit])
   end
 
   defp ensure_authentication(conn, _opts) do

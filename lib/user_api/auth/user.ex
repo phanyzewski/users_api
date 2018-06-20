@@ -2,12 +2,11 @@ defmodule UserApi.Auth.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "users" do
-    field :email, :string
-    field :is_active, :boolean, default: false
-    field :password, :string, virtual: true
-    field :password_hash, :string
+    field(:email, :string)
+    field(:is_active, :boolean, default: false)
+    field(:password, :string, virtual: true)
+    field(:password_hash, :string)
 
     timestamps()
   end
@@ -23,7 +22,8 @@ defmodule UserApi.Auth.User do
 
   defp put_password_hash(
          %Ecto.Changeset{
-           valid?: true, changes: %{password: password}
+           valid?: true,
+           changes: %{password: password}
          } = changeset
        ) do
     change(changeset, password_hash: Bcrypt.hash_pwd_salt(password))

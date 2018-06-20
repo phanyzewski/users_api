@@ -4,7 +4,7 @@ defmodule UserApiWeb.UserController do
   alias UserApi.Auth
   alias UserApi.Auth.User
 
-  action_fallback UserApiWeb.FallbackController
+  action_fallback(UserApiWeb.FallbackController)
 
   def index(conn, _params) do
     users = Auth.list_users()
@@ -35,6 +35,7 @@ defmodule UserApiWeb.UserController do
 
   def delete(conn, %{"id" => id}) do
     user = Auth.get_user!(id)
+
     with {:ok, %User{}} <- Auth.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
