@@ -34,7 +34,7 @@ defmodule UserApi.Mixfile do
   defp deps do
     [
       {:bcrypt_elixir, "~> 1.0"},
-      {:phoenix, "~> 1.3.2"},
+      {:phoenix, "~> 1.4.10"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
